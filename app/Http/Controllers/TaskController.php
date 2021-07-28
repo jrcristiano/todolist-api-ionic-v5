@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\WelcomeUserCreated;
-use App\Services\UserService;
-use App\Http\Requests\UserRequest as Request;
+use App\Services\TaskService;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TaskController extends Controller
 {
-    public function __construct(private UserService $userService) { }
+    public function __construct(private TaskService $taskService) { }
 
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->userService->all();
-        return response()->json($users);
+        $tasks = $this->taskService->paginate();
+        return response()->json($tasks);
     }
 
     /**
@@ -29,12 +28,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(array_keys($request->rules()));
-        $data['password'] = bcrypt($data['password']);
-        $user = $this->userService->save($data);
-
-        event(new WelcomeUserCreated($user));
-        return response()->json($user, 201);
+        //
     }
 
     /**

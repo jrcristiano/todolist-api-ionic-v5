@@ -14,14 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/users', [UserController::class, 'store']);
 
 Route::group([
     'prefix' => 'v1',
     'middleware' => 'auth:api'
 ], function () {
-    Route::get('authenticated', function() {
-        return response()->json(request()->user());
-    });
+    Route::get('authenticated', fn() => response()->json(request()->user()));
 
     Route::resources([
         'users' => UserController::class
