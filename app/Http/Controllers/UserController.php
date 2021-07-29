@@ -30,7 +30,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->only(array_keys($request->rules()));
-        $data['password'] = bcrypt($data['password']);
         $user = $this->userService->save($data);
 
         event(new WelcomeUserCreated($user));

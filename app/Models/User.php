@@ -43,4 +43,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function setNameAttribute(string $name): void
+    {
+        $this->attributes['name'] = ucfirst($name);
+    }
+
+    public function setLastnameAttribute(string $lastname): void
+    {
+        $this->attributes['lastname'] = ucfirst($lastname);
+    }
+
+    public function setEmailAttribute(string $email): void
+    {
+        $this->attributes['email'] = strtolower($email);
+    }
+
+    public function setPasswordAttribute(string $password): void
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

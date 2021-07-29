@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\TaskService;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request as HttpRequest;
+use App\Http\Requests\TaskRequest as Request;
 
 class TaskController extends Controller
 {
@@ -14,9 +15,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(HttpRequest $request)
     {
-        $tasks = $this->taskService->paginate();
+        $tasks = $this->taskService->getOnDemandTasks($request);
         return response()->json($tasks);
     }
 
