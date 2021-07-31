@@ -17,7 +17,6 @@ class DraggableTaskController extends Controller
         ]);
 
         $this->taskService->updateByDragUpDown($data);
-
         return response(200);
     }
 
@@ -29,7 +28,6 @@ class DraggableTaskController extends Controller
         ]);
 
         $task = $this->taskService->updateByDragDownUp($data);
-
-        return response()->json($task);
+        return response(200);
     }
 }

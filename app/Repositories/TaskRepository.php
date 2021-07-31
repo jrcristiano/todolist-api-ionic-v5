@@ -15,7 +15,7 @@ class TaskRepository extends Repository
                 $query->skip($skip);
             })
             ->take(15)
-            ->orderBy('id', 'asc')
+            ->orderBy('id', 'desc')
             ->get();
     }
 }
