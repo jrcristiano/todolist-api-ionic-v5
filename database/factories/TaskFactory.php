@@ -21,9 +21,12 @@ class TaskFactory extends Factory
      */
     public function definition()
     {
+        static $order = 1;
+
         return [
             'title' => $this->faker->firstName(),
             'description' => $this->faker->text(100),
+            'order' => $order++,
             'status' => Task::TODO,
             'user_id' => 1
         ];

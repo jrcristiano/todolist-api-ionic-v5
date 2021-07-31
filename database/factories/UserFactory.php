@@ -27,7 +27,7 @@ class UserFactory extends Factory
             'lastname' => 'Junior',
             'email' => 'cristiano@server.com',
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => 'password', // o bcrypt já está sendo passado no model
             'remember_token' => Str::random(10),
         ];
     }

@@ -14,8 +14,10 @@ class Task extends Model
     const DONE = 3;
 
     protected $fillable = [
+        'id',
         'title',
         'description',
+        'order',
         'status',
         'user_id'
     ];
