@@ -29,7 +29,8 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->only(array_keys($request->rules()));
+        return $data;
     }
 
     /**
